@@ -1,0 +1,3369 @@
+/**
+* Template Name: Bootslander
+* Template URL: https://bootstrapmade.com/bootslander-free-bootstrap-landing-page-template/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Roboto",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway",  sans-serif;
+  --nav-font: "Poppins",  sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root { 
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #040677; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #1acc8d; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #ffffff;  /* The default color of the main navmenu links */
+  --nav-hover-color: #1acc8d; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #1acc8d; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #f4f5fe;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #08005e;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #0c0091;
+  --contrast-color: #ffffff;
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+/* PHP Email Form Messages
+------------------------------*/
+.php-email-form .error-message {
+  display: none;
+  background: #df1529;
+  color: #ffffff;
+  text-align: left;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .sent-message {
+  display: none;
+  color: #ffffff;
+  background: #059652;
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.php-email-form .loading {
+  display: none;
+  background: var(--surface-color);
+  text-align: center;
+  padding: 15px;
+  margin-bottom: 24px;
+}
+
+.php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid var(--accent-color);
+  border-top-color: var(--surface-color);
+  animation: php-email-form-loading 1s linear infinite;
+}
+
+@keyframes php-email-form-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+.header {
+  --background-color: rgba(255, 255, 255, 0);
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 20px 0;
+  transition: all 0.5s;
+  z-index: 997;
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 32px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.scrolled .header {
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Header on Scroll
+------------------------------*/
+.scrolled .header {
+  --background-color: #74b479;
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 1200px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu>ul>li {
+    white-space: nowrap;
+    padding: 15px 14px;
+  }
+
+  .navmenu>ul>li:last-child {
+    padding-right: 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: color-mix(in srgb, var(--nav-color), transparent 20%);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu>ul>li>a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover>a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 25px;
+  }
+
+  .navmenu li:hover>a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover>a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover>ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover>ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+    transform: rotate(180deg);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown>.dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu>ul {
+    display: block;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  position: relative;
+}
+
+.footer .footer-top {
+  padding-top: 50px;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .footer-about .logo {
+  line-height: 1;
+  margin-bottom: 25px;
+}
+
+.footer .footer-about .logo img {
+  max-height: 40px;
+  margin-right: 6px;
+}
+
+.footer .footer-about .logo span {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: var(--heading-font);
+  color: var(--heading-color);
+}
+
+.footer .footer-about p {
+  font-size: 14px;
+  font-family: var(--heading-font);
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin-right: 10px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.footer h4 {
+  font-size: 16px;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.footer .footer-links {
+  margin-bottom: 30px;
+}
+
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer .footer-links ul i {
+  padding-right: 2px;
+  font-size: 12px;
+  line-height: 0;
+}
+
+.footer .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer .footer-links ul li:first-child {
+  padding-top: 0;
+}
+
+.footer .footer-links ul a {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  display: inline-block;
+  line-height: 1;
+}
+
+.footer .footer-links ul a:hover {
+  color: var(--accent-color);
+}
+
+.footer .footer-contact p {
+  margin-bottom: 5px;
+}
+
+.footer .footer-newsletter .newsletter-form {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  padding: 6px 8px;
+  position: relative;
+  border-radius: 4px;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 80%);
+  display: flex;
+  background-color: var(--background-color);
+  transition: 0.3s;
+}
+
+.footer .footer-newsletter .newsletter-form:focus-within {
+  border-color: var(--accent-color);
+}
+
+.footer .footer-newsletter .newsletter-form input[type=email] {
+  border: 0;
+  padding: 4px;
+  width: 100%;
+  background-color: var(--background-color);
+  color: var(--default-color);
+}
+
+.footer .footer-newsletter .newsletter-form input[type=email]:focus-visible {
+  outline: none;
+}
+
+.footer .footer-newsletter .newsletter-form input[type=submit] {
+  border: 0;
+  font-size: 16px;
+  padding: 0 20px;
+  margin: -7px -8px -7px 0;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  transition: 0.3s;
+  border-radius: 0 4px 4px 0;
+}
+
+.footer .footer-newsletter .newsletter-form input[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+.footer .copyright {
+  padding: 25px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .credits {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  overflow: hidden;
+  background: var(--background-color);
+  transition: all 0.6s ease-out;
+}
+
+#preloader:before {
+  content: "";
+  position: fixed;
+  top: calc(50% - 30px);
+  left: calc(50% - 30px);
+  border: 6px solid #ffffff;
+  border-color: var(--accent-color) transparent var(--accent-color) transparent;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: animate-preloader 1.5s linear infinite;
+}
+
+@keyframes animate-preloader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  position: relative;
+}
+
+.page-title .heading {
+  padding: 160px 0 80px 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.page-title .heading h1 {
+  font-size: 38px;
+  font-weight: 700;
+}
+
+.page-title nav {
+  background-color: color-mix(in srgb, var(--default-color), transparent 88%);
+  padding: 20px 0;
+}
+
+.page-title nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.page-title nav ol li+li {
+  padding-left: 10px;
+}
+
+.page-title nav ol li+li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0;
+  line-height: 1px;
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  position: relative;
+}
+
+.section-title h2::after {
+  content: "";
+  width: 120px;
+  height: 1px;
+  display: inline-block;
+  background: var(--accent-color);
+  margin: 4px 10px;
+}
+
+.section-title div {
+  color: var(--heading-color);
+  margin: 0;
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: var(--heading-font);
+}
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 70vh;
+  position: relative;
+  padding: 120px 0 120px 0;
+  display: flex;
+  align-items: center;
+}
+
+.hero .hero-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero:before {
+  content: "";
+  /* Mengubah lapisan ungu menjadi hijau tua transparan agar foto background tetap terlihat */
+  background: rgba(40, 79, 55, 0.85); 
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h1 {
+  margin: 0 0 20px 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  color: color-mix(in srgb, var(--heading-color), transparent 30%);
+}
+
+.hero h1 span {
+  color: var(--heading-color);
+  border-bottom: 4px solid var(--accent-color);
+}
+
+.hero p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  margin: 5px 0 30px 0;
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.hero .btn-get-started {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  font-family: var(--heading-font);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 28px 12px 28px;
+  border-radius: 50px;
+  transition: 0.5s;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.hero .btn-get-started:hover {
+  color: var(--contrast-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 15%);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.hero .btn-watch-video {
+  font-size: 16px;
+  transition: 0.5s;
+  margin-left: 25px;
+  color: var(--default-color);
+  font-weight: 600;
+}
+
+.hero .btn-watch-video i {
+  color: var(--accent-color);
+  font-size: 32px;
+  transition: 0.3s;
+  line-height: 0;
+  margin-right: 8px;
+}
+
+.hero .btn-watch-video:hover {
+  color: var(--accent-color);
+}
+
+.hero .btn-watch-video:hover i {
+  color: color-mix(in srgb, var(--accent-color), transparent 15%);
+}
+
+.hero .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (max-width: 640px) {
+  .hero h1 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+
+  .hero .btn-get-started,
+  .hero .btn-watch-video {
+    font-size: 13px;
+  }
+}
+
+.hero .hero-waves {
+  display: block;
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.hero .wave1 use {
+  animation: move-forever1 10s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+  opacity: 0.6;
+}
+
+.hero .wave2 use {
+  animation: move-forever2 8s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+  opacity: 0.4;
+}
+
+.hero .wave3 use {
+  animation: move-forever3 6s linear infinite;
+  animation-delay: -2s;
+  fill: var(--default-color);
+}
+
+@keyframes move-forever1 {
+  0% {
+    transform: translate(85px, 0%);
+  }
+
+  100% {
+    transform: translate(-90px, 0%);
+  }
+}
+
+@keyframes move-forever2 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes move-forever3 {
+  0% {
+    transform: translate(-90px, 0%);
+  }
+
+  100% {
+    transform: translate(85px, 0%);
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about {
+  padding-top: 100px;
+}
+
+.about .content h3 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  padding: 10px 20px;
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+  border-radius: 7px;
+  display: inline-block;
+}
+
+.about .content h2 {
+  font-weight: 700;
+}
+
+.about .content p:last-child {
+  margin-bottom: 0;
+}
+
+.about .content .read-more {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  padding: 12px 24px;
+  border-radius: 5px;
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about .content .read-more i {
+  font-size: 18px;
+  margin-left: 5px;
+  line-height: 0;
+  transition: 0.3s;
+}
+
+.about .content .read-more:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  padding-right: 19px;
+}
+
+.about .content .read-more:hover i {
+  margin-left: 10px;
+}
+
+.about .icon-box {
+  background-color: var(--surface-color);
+  padding: 50px 40px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  transition: all 0.3s ease-out 0s;
+}
+
+.about .icon-box i {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-size: 32px;
+  line-height: 0;
+  transition: all 0.4s ease-out 0s;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+}
+
+.about .icon-box h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.about .icon-box p {
+  margin-bottom: 0;
+}
+
+.about .icon-box:hover i {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.about .icon-boxes .col-md-6:nth-child(2) .icon-box,
+.about .icon-boxes .col-md-6:nth-child(4) .icon-box {
+  margin-top: -40px;
+}
+
+@media (max-width: 768px) {
+
+  .about .icon-boxes .col-md-6:nth-child(2) .icon-box,
+  .about .icon-boxes .col-md-6:nth-child(4) .icon-box {
+    margin-top: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Features Section
+--------------------------------------------------------------*/
+.features .features-item {
+  background-color: var(--surface-color);
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  transition: 0.3s;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  position: relative;
+}
+
+.features .features-item i {
+  font-size: 32px;
+  padding-right: 10px;
+  line-height: 0;
+}
+
+.features .features-item h3 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.features .features-item h3 a {
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.features .features-item:hover {
+  border-color: var(--accent-color);
+}
+
+.features .features-item:hover h3 a {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats i {
+  background-color: var(--surface-color);
+  color: var(--accent-color);
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  width: 54px;
+  height: 54px;
+  font-size: 24px;
+  border-radius: 50px;
+  border: 2px solid var(--background-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stats .stats-item {
+  background-color: var(--surface-color);
+  margin-top: -27px;
+  padding: 30px 30px 25px 30px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.stats .stats-item span {
+  font-size: 36px;
+  display: block;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.stats .stats-item p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 16px;
+}
+
+/*--------------------------------------------------------------
+# Details Section
+--------------------------------------------------------------*/
+.details .features-item {
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.details .features-item+.features-item {
+  margin-top: 100px;
+}
+
+@media (max-width: 640px) {
+  .details .features-item+.features-item {
+    margin-top: 40px;
+  }
+}
+
+.details .features-item h3 {
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.details .features-item ul {
+  list-style: none;
+  padding: 0;
+}
+
+.details .features-item ul li {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.details .features-item ul li:last-child {
+  padding-bottom: 0;
+}
+
+.details .features-item ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: var(--accent-color);
+}
+
+.details .features-item p:last-child {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# Gallery Section
+--------------------------------------------------------------*/
+.gallery .gallery-item {
+  overflow: hidden;
+  border-right: 3px solid var(--background-color);
+  border-bottom: 3px solid var(--background-color);
+}
+
+.gallery .gallery-item img {
+  transition: all ease-in-out 0.4s;
+}
+
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/*--------------------------------------------------------------
+# Testimonials Section
+--------------------------------------------------------------*/
+.testimonials {
+  padding: 80px 0;
+  position: relative;
+}
+
+.testimonials:before {
+  content: "";
+  background: color-mix(in srgb, var(--background-color), transparent 30%);
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.testimonials .testimonials-bg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.testimonials .container {
+  position: relative;
+  z-index: 3;
+}
+
+.testimonials .testimonials-carousel,
+.testimonials .testimonials-slider {
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item {
+  text-align: center;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 100px;
+  border-radius: 50%;
+  border: 6px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  margin: 0 auto;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 14px;
+  margin: 0 0 15px 0;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+}
+
+.testimonials .testimonial-item .stars {
+  margin-bottom: 15px;
+}
+
+.testimonials .testimonial-item .stars i {
+  color: #ffc107;
+  margin: 0 1px;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 26px;
+  line-height: 0;
+}
+
+.testimonials .testimonial-item .quote-icon-left {
+  display: inline-block;
+  left: -5px;
+  position: relative;
+}
+
+.testimonials .testimonial-item .quote-icon-right {
+  display: inline-block;
+  right: -5px;
+  position: relative;
+  top: 10px;
+  transform: scale(-1, -1);
+}
+
+.testimonials .testimonial-item p {
+  font-style: italic;
+  margin: 0 auto 15px auto;
+}
+
+.testimonials .swiper-wrapper {
+  height: auto;
+}
+
+.testimonials .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background-color: color-mix(in srgb, var(--default-color), transparent 50%);
+  opacity: 0.5;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--default-color);
+  opacity: 1;
+}
+
+@media (min-width: 992px) {
+  .testimonials .testimonial-item p {
+    width: 80%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Team Section
+--------------------------------------------------------------*/
+.team .member {
+  position: relative;
+}
+
+.team .member .pic {
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.team .member .member-info {
+  background-color: var(--surface-color);
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: -50px;
+  left: 20px;
+  right: 20px;
+  padding: 20px 15px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.team .member h4 {
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 16px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.team .member h4::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 1px;
+  background: color-mix(in srgb, var(--default-color), transparent 60%);
+  bottom: 0;
+  left: 0;
+}
+
+.team .member span {
+  font-style: italic;
+  display: block;
+  font-size: 13px;
+}
+
+.team .member .social {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+}
+
+.team .member .social a {
+  transition: color 0.3s;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.team .member .social a:hover {
+  color: var(--accent-color);
+}
+
+.team .member .social i {
+  font-size: 16px;
+  margin: 0 2px;
+}
+
+/*--------------------------------------------------------------
+# Pricing Section
+--------------------------------------------------------------*/
+.pricing .pricing-item {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 96%);
+  padding: 40px 40px;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.pricing h3 {
+  font-weight: 600;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.pricing h4 {
+  color: var(--accent-color);
+  font-size: 48px;
+  font-weight: 700;
+  font-family: var(--heading-font);
+  margin-bottom: 0;
+}
+
+.pricing h4 sup {
+  font-size: 28px;
+}
+
+.pricing h4 span {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.pricing .description {
+  font-size: 14px;
+}
+
+.pricing .cta-btn {
+  border: 1px solid var(--default-color);
+  color: var(--default-color);
+  display: block;
+  text-align: center;
+  padding: 10px 35px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--heading-font);
+  transition: 0.3s;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.pricing .cta-btn:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+.pricing ul {
+  padding: 0;
+  list-style: none;
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+  text-align: left;
+  line-height: 20px;
+}
+
+.pricing ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.pricing ul li:last-child {
+  padding-bottom: 0;
+}
+
+.pricing ul i {
+  color: #059652;
+  font-size: 24px;
+  padding-right: 3px;
+}
+
+.pricing ul .na {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na i {
+  color: color-mix(in srgb, var(--default-color), transparent 60%);
+}
+
+.pricing ul .na span {
+  text-decoration: line-through;
+}
+
+.pricing .featured {
+  position: relative;
+}
+
+.pricing .featured .popular {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  padding: 4px 15px 6px 15px;
+  margin: 0;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.pricing .featured .cta-btn {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+@media (max-width: 992px) {
+  .pricing .box {
+    max-width: 60%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .pricing .box {
+    max-width: 80%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+@media (max-width: 420px) {
+  .pricing .box {
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+  }
+}
+
+/*--------------------------------------------------------------
+# Faq Section
+--------------------------------------------------------------*/
+.faq .content h3 {
+  font-weight: 400;
+  font-size: 34px;
+}
+
+.faq .content p {
+  color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.faq .faq-container {
+  margin-top: 15px;
+}
+
+.faq .faq-container .faq-item {
+  background-color: var(--surface-color);
+  position: relative;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0px 5px 25px 0px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item:last-child {
+  margin-bottom: 0;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 24px;
+  margin: 0 30px 0 32px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item h3 span {
+  color: var(--accent-color);
+  padding-right: 5px;
+}
+
+.faq .faq-container .faq-item h3:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item .faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: 0.3s ease-in-out;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.faq .faq-container .faq-item .faq-content p {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+
+.faq .faq-container .faq-item .faq-icon {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  font-size: 22px;
+  line-height: 0;
+  transition: 0.3s;
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-item .faq-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 16px;
+  line-height: 0;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.faq .faq-container .faq-item .faq-toggle:hover {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active h3 {
+  color: var(--accent-color);
+}
+
+.faq .faq-container .faq-active .faq-content {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  opacity: 1;
+  padding-top: 10px;
+}
+
+.faq .faq-container .faq-active .faq-toggle {
+  transform: rotate(90deg);
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Contact Section
+--------------------------------------------------------------*/
+.contact .info-item+.info-item {
+  margin-top: 40px;
+}
+
+.contact .info-item i {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  font-size: 20px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px;
+}
+
+.contact .info-item h3 {
+  padding: 0;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.contact .info-item p {
+  padding: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.contact .info-item:hover i {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.contact .php-email-form {
+  height: 100%;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.contact .php-email-form input[type=text]:focus,
+.contact .php-email-form input[type=email]:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form input[type=text]::placeholder,
+.contact .php-email-form input[type=email]::placeholder,
+.contact .php-email-form textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+.contact .php-email-form button[type=submit] {
+  color: var(--contrast-color);
+  background: var(--accent-color);
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 25%);
+}
+
+/*--------------------------------------------------------------
+# Starter Section Section
+--------------------------------------------------------------*/
+.starter-section {
+  /* Add your styles here */
+}
+
+/* Ikon Mie */
+.features .features-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 95px;
+  padding: 18px;
+}
+
+.mie-symbol {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--mie-color), transparent 88%);
+  color: var(--mie-color);
+  font-size: 27px;
+}
+
+.features .features-item h3 {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.4;
+}
+/* Mengatur agar teks menjadi ke bawah (block) dan mepet */
+.header .sitename {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+/* Styling untuk baris atas (PABRIK MIE) */
+.header .sitename .line-top {
+  font-size: 20px;       /* Sesuaikan ukuran font atas */
+  font-weight: 500;
+  color: #ffffff;        /* Warna putih atau sesuaikan */
+  letter-spacing: 2px;   /* Memberi jarak antar huruf agar rapi */
+}
+
+/* Styling untuk baris bawah (KURNIA JAYA) - Lebih besar & beda warna */
+.header .sitename .line-bottom {
+  font-size: 30px;       /* Ukuran lebih besar dari yang atas */
+  font-weight: 700;
+  color: #ffc107;        /* Contoh warna kuning (bisa diganti kode warna lain misal #ff6b6b) */
+}
+/* Efek interaktif zoom/popup halus pada gambar di Detail Produk saat di-hover */
+.details.section img {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 8px;
+}
+
+.details.section img:hover {
+  transform: scale(1.03); /* Gambar membesar sedikit */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Memberikan efek bayangan */
+}
+/* Memperbesar dan mewarnai tulisan judul di pop-up GLightbox */
+.glightbox-container .gslide-description .gslide-title,
+.glightbox-container .glightbox-desc,
+.gdesc-inner {
+  font-size: 40px !important;
+  font-weight: 700 !important;
+  color: #ffc825 !important; /* Warna hijau khas tokomu (bisa diganti misal #ffc107 untuk kuning) */
+  text-align: center !important;
+}
+
+/* Mempertegas warna background deskripsi di bawah gambar pop-up */
+.glightbox-container .gslide-desc {
+  background: #111111 !important;
+  color: #16b989 !important;
+}
+/* 1. Mengubah background full section About menjadi hijau tua #01321C */
+#about.about.section {
+  background-color: #01321C !important;
+}
+
+/* 2. Mengubah warna teks sebelah kiri agar tetap kontras dan terbaca jelas di atas background hijau */
+#about .content h2 {
+  color: #F8A41E !important; /* Judul utama jadi putih */
+}
+
+#about .content p {
+  color: #e0e0e0 !important; /* Teks paragraf jadi putih keabuan terang */
+}
+
+#about .content h3 {
+  background-color: rgba(255, 239, 205, 0.15) !important;
+  color: #FFEFCD !important; /* Label "Tentang Kami" jadi warna cream senada */
+}
+
+/* 3. Mengubah background 4 kotak di sebelah kanan menjadi warna cream #FFEFCD */
+#about .icon-box {
+  background-color: #FFEFCD !important;
+}
+
+/* Mengubah warna judul & teks di dalam 4 kotak agar kontras di atas warna cream */
+#about .icon-box h3 {
+  color: #01321C !important; /* Judul kotak jadi hijau tua */
+}
+
+#about .icon-box p {
+  color: #333333 !important; /* Teks isi kotak jadi abu-abu gelap */
+}
+/* 1. Ubah background header atas (saat di-scroll) jadi cream #FFEFCD */
+.scrolled .header {
+  background-color: #FFEFCD !important;
+  --background-color: #FFEFCD !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Sesuaikan warna teks menu & logo atas saat header berwarna cream agar terbaca jelas */
+.scrolled .header .sitename .line-top {
+  color: #01321C !important; /* Hijau tua */
+}
+
+.scrolled .header .sitename .line-bottom {
+  color: #d98200 !important; /* Kuning tua/oranye keemasan agar kontras di atas cream */
+}
+
+.scrolled .header .navmenu a,
+.scrolled .header .navmenu a:focus {
+  color: #01321C !important; /* Menu navigasi jadi hijau tua */
+  font-weight: 500;
+}
+
+.scrolled .header .navmenu a:hover,
+.scrolled .header .navmenu .active {
+  color: #1acc8d !important; /* Tetap hijau cerah saat aktif/disorot */
+}
+
+/* 2. Ubah sela-sela ombak putih pembatas antara Hero & About jadi hijau tua #01321C */
+.hero .wave1 use,
+.hero .wave2 use,
+.hero .wave3 use {
+  fill: #01321C !important;
+}
+
+/* Pastikan warna latar belakang dasar di area hero/main tidak menyisakan garis putih */
+.hero {
+  background-color: #01321C !important;
+}
+/* Mengubah warna teks & garis bawah "Mie Kurnia Jaya" di Hero Section menjadi #F8A41E */
+.hero h1 span {
+  color: #F8A41E !important;
+  border-bottom: 4px solid #F8A41E !important;
+}
+/* Warna tombol "Jelajahi Kami" dibuat lebih gelap agar kontras dengan background */
+.hero .btn-get-started {
+  background-color: rgba(1, 50, 28, 0.85) !important; /* Hijau tua pekat */
+  color: #FFEFCD !important; /* Teks cream */
+  border: 1.5px solid #FFEFCD !important; /* Garis tepi cream agar bentuk tombol tegas */
+  font-weight: 500 !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Efek saat tombol "Jelajahi Kami" disorot kursor (hover) */
+.hero .btn-get-started:hover {
+  background-color: #FFEFCD !important;
+  color: #01321C !important;
+}
+/* 1. Ubah warna ikon di dalam 4 kotak menjadi hijau tua #01321C */
+#about .icon-box i {
+  color: #01321C !important;
+  background-color: rgba(1, 50, 28, 0.1) !important; /* Lingkaran latar belakang ikon jadi hijau transparan lembut */
+}
+
+/* Efek saat kotak disorot kursor (hover) pada ikon */
+#about .icon-box:hover i {
+  background-color: #01321C !important;
+  color: #FFEFCD !important;
+}
+
+/* 2. Ubah warna judul bold di masing-masing kotak menjadi kuning #F8A41E */
+#about .icon-box h3 {
+  color: #F8A41E !important;
+}
+/* 1. Mengubah background Stats Section menjadi kuning #F8A41E */
+#stats.stats.section {
+  background-color: #F8A41E !important;
+}
+
+/* 2. Mengubah warna 4 kotak menjadi hijau tua #01321C */
+#stats .stats-item {
+  background-color: #01321C !important;
+}
+
+/* 3. Mengubah warna ikon di atas kotak menjadi cream #FFEFCD (lingkaran tetap hijau tua dengan garis tepi kuning) */
+#stats i {
+  background-color: #01321C !important;
+  color: #FFEFCD !important;
+  border: 2px solid #F8A41E !important;
+}
+
+/* 4. Mengubah tulisan angka/teks tebal (2015, 8, 2, Luar Kota) menjadi cream #FFEFCD */
+#stats .stats-item span {
+  color: #FFEFCD !important;
+}
+
+/* 5. Menyesuaikan tulisan keterangan di bawahnya agar lembut dan kontras di atas hijau tua */
+#stats .stats-item p {
+  color: rgba(255, 239, 205, 0.85) !important;
+}
+/* 1. Animasi gerak mengambang tipis ke atas-bawah untuk 4 kotak Stats */
+@keyframes float-stats {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px); /* Gerak naik tipis 8px */
+  }
+}
+
+/* Menerapkan animasi ke kolom pembungkus kotak & ikon agar ikut bergerak bersamaan */
+#stats .col-lg-3 {
+  animation: float-stats 3s ease-in-out infinite;
+}
+
+/* Memberi jeda waktu berbeda di tiap kotak agar goyangnya bergelombang alami (tidak kaku barengan) */
+#stats .col-lg-3:nth-child(1) { animation-delay: 0s; }
+#stats .col-lg-3:nth-child(2) { animation-delay: 0.4s; }
+#stats .col-lg-3:nth-child(3) { animation-delay: 0.8s; }
+#stats .col-lg-3:nth-child(4) { animation-delay: 1.2s; }
+
+/* 2. Efek hover pada masing-masing logo/ikon (menyala cream solid saat kursor diarahkan) */
+#stats i {
+  transition: all 0.3s ease !important;
+  cursor: pointer;
+}
+
+#stats .col-lg-3:hover i,
+#stats i:hover {
+  background-color: #FFEFCD !important; /* Lingkaran berubah jadi cream solid */
+  color: #01321C !important; /* Ikon di dalamnya berubah jadi hijau tua */
+  border-color: #01321C !important;
+  transform: scale(1.1); /* Sedikit membesar agar terasa interaktif */
+}
+/*--------------------------------------------------------------
+# Features Section (Katalog Pilihan Varian Mie) - Palet #01321C, #FFEFCD, #F8A41E
+--------------------------------------------------------------*/
+#features.features.section {
+  background-color: #FFFDF9 !important; /* Putih hangat/cream sangat muda agar tidak berat setelah blok kuning */
+}
+
+/* Garis aksen kecil di samping label "KATALOG PRODUK" */
+#features .section-title h2 {
+  color: #01321C !important;
+  font-weight: 600 !important;
+}
+
+#features .section-title h2::after {
+  background: #F8A41E !important;
+  height: 2px !important;
+}
+
+/* Judul besar "PILIHAN VARIAN MIE KAMI" */
+#features .section-title div {
+  color: #01321C !important;
+}
+
+/* Kartu masing-masing varian mie (8 kotak) */
+#features .features-item {
+  background-color: #FFEFCD !important;
+  border: 1px solid rgba(1, 50, 28, 0.12) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 14px rgba(1, 50, 28, 0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Teks nama varian mie di dalam kartu */
+#features .features-item h3 a {
+  color: #01321C !important;
+  font-weight: 700 !important;
+  transition: color 0.3s ease !important;
+}
+
+/* Efek saat kartu varian mie disorot kursor (hover) */
+#features .features-item:hover {
+  background-color: #01321C !important;
+  border-color: #F8A41E !important;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(1, 50, 28, 0.18) !important;
+}
+
+#features .features-item:hover h3 a {
+  color: #FFEFCD !important;
+}
+/* Menyamakan ukuran, proporsi, dan kerapian semua foto varian mie di Details Section */
+#details .features-item img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 340px !important;       /* Samakan tinggi foto agar sejajar rapi */
+  object-fit: cover !important;    /* Potong bagian berlebih secara proporsional tanpa gepeng */
+  border-radius: 12px !important;
+  display: block;
+}
+#details .features-item .col-md-5 img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 360px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+/* Kunci ukuran foto di Details Section agar seragam & tidak melebar keluar */
+#details .features-item .col-md-5,
+#details .features-item .col-md-5 a,
+#details .features-item .col-md-5 img {
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+#details .features-item .col-md-5 img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  border-radius: 12px !important;
+  cursor: zoom-in !important;
+  display: block !important;
+}
+/*--------------------------------------------------------------
+# Details Section & Lightbox Caption - Palet #01321C, #FFEFCD, #F8A41E
+--------------------------------------------------------------*/
+#details.details.section {
+  background-color: #01321C !important;
+  color: #FFEFCD !important;
+}
+
+/* Judul section "DETAIL PRODUK / Mengenal Lebih Dekat Varian Mie Kami" */
+#details .section-title h2 {
+  color: #FFEFCD !important;
+}
+
+#details .section-title h2::after {
+  background: #F8A41E !important;
+}
+
+#details .section-title span,
+#details .section-title .description-title {
+  color: #FFEFCD !important;
+}
+
+#details .section-title .description-title {
+  color: #F8A41E !important;
+}
+
+/* Teks nama varian, deskripsi miring, dan poin fitur */
+#details .features-item h3 {
+  color: #F8A41E !important;
+  font-weight: 700 !important;
+}
+
+#details .features-item p.fst-italic {
+  color: rgba(255, 239, 205, 0.88) !important;
+}
+
+#details .features-item ul li {
+  color: #FFEFCD !important;
+}
+
+#details .features-item ul i {
+  color: #F8A41E !important;
+}
+
+/* Garis tepi (outline), bayangan menonjol, & efek floating pada foto varian mie */
+#details .features-item .col-md-5 a.glightbox {
+  display: block;
+  border-radius: 14px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+#details .features-item .col-md-5 img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  border: 2px solid #F8A41E !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.45), 0 4px 10px rgba(248, 164, 30, 0.22) !important;
+  cursor: zoom-in !important;
+  display: block !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Saat kursor diarahkan ke foto: ikut melayang tipis & bayangan lebih menonjol */
+#details .features-item .col-md-5:hover img {
+  transform: translateY(-7px) scale(1.015) !important;
+  border-color: #FFEFCD !important;
+  box-shadow: 0 22px 38px rgba(0, 0, 0, 0.58), 0 8px 18px rgba(248, 164, 30, 0.35) !important;
+}
+
+/* Menyesuaikan background & tulisan pada pop-up saat foto mie diklik (GLightbox) */
+.glightbox-clean .gslide-description,
+.gdesc-inner {
+  background-color: #01321C !important;
+  border-top: 2px solid #F8A41E !important;
+}
+
+.glightbox-clean .gslide-title {
+  color: #F8A41E !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+}
+
+.glightbox-clean .gslide-desc {
+  color: #FFEFCD !important;
+}
+/* Outline sedikit lebih tebal (3px) + bayangan ganda agar lebih menonjol di atas background hijau tua */
+#details .features-item .col-md-5 img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  border-radius: 14px !important;
+  border: 3px solid #F8A41E !important;
+  box-shadow:
+    0 18px 26px -6px rgba(0, 0, 0, 0.75),
+    0 10px 24px rgba(248, 164, 30, 0.35),
+    0 0 0 4px rgba(255, 239, 205, 0.14) !important;
+  cursor: zoom-in !important;
+  display: block !important;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Saat kursor diarahkan ke foto: garis tepi & bayangannya makin tegas */
+#details .features-item .col-md-5:hover img {
+  transform: translateY(-8px) scale(1.015) !important;
+  border-color: #FFEFCD !important;
+  box-shadow:
+    0 24px 34px -6px rgba(0, 0, 0, 0.85),
+    0 14px 30px rgba(248, 164, 30, 0.5),
+    0 0 0 5px rgba(248, 164, 30, 0.25) !important;
+}
+/*--------------------------------------------------------------
+# Kerapian & Keseimbangan Teks + Jarak Gambar di Details Section
+--------------------------------------------------------------*/
+#details .features-item {
+  margin-bottom: 56px;
+}
+
+/* Jarak lebih lega antara kolom gambar dan kolom penjelasan di layar sedang & besar */
+@media (min-width: 768px) {
+  #details .features-item {
+    --bs-gutter-x: 3.5rem;
+  }
+}
+
+/* Perbesar sedikit ukuran font deskripsi miring & ratakan justify */
+#details .features-item p.fst-italic {
+  font-size: 1.06rem !important;
+  line-height: 1.75 !important;
+  text-align: justify !important;
+  margin-bottom: 16px !important;
+}
+
+/* Perbesar sedikit ukuran font poin-poin list & ratakan justify */
+#details .features-item ul {
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#details .features-item ul li {
+  font-size: 1.05rem !important;
+  line-height: 1.75 !important;
+  text-align: justify !important;
+  margin-bottom: 10px !important;
+}
+
+/* Samakan tinggi gambar (320px) agar seimbang dengan tinggi blok teks di sebelahnya */
+#details .features-item .col-md-5 img {
+  height: 320px !important;
+}
+/*--------------------------------------------------------------
+# Kerapian & Keseimbangan Teks + Jarak Gambar di Details Section
+--------------------------------------------------------------*/
+#details .features-item {
+  margin-bottom: 60px;
+}
+
+/* Jarak lebih lega antara kolom gambar dan kolom penjelasan di layar sedang & besar */
+@media (min-width: 768px) {
+  #details .features-item {
+    --bs-gutter-x: 3.75rem;
+  }
+}
+
+/* Judul tiap varian mie lebih besar & tegas */
+#details .features-item h3 {
+  font-size: 1.85rem !important;
+  margin-bottom: 12px !important;
+}
+
+/* Perbesar ukuran font deskripsi miring & ratakan justify */
+#details .features-item p.fst-italic {
+  font-size: 1.2rem !important;
+  line-height: 1.8 !important;
+  text-align: justify !important;
+  margin-bottom: 18px !important;
+}
+
+/* Perbesar ukuran font poin-poin list & ratakan justify */
+#details .features-item ul {
+  padding-left: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#details .features-item ul li {
+  font-size: 1.7rem !important;
+  line-height: 1.8 !important;
+  text-align: justify !important;
+  margin-bottom: 12px !important;
+}
+
+/* Sesuaikan tinggi gambar agar tetap seimbang dengan tinggi teks */
+#details .features-item .col-md-5 img {
+  height: 340px !important;
+}
+/*--------------------------------------------------------------
+# Gelombang Bergelombang Bergerak di Features Section
+--------------------------------------------------------------*/
+#features.features.section {
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 120px !important; /* Ruang agar gelombang tidak menimpa 8 kartu varian */
+}
+
+#features .container {
+  position: relative;
+  z-index: 2;
+}
+
+#features .features-waves {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#features .f-wave1 use {
+  fill: rgba(1, 50, 28, 0.25);
+  animation: move-forever-features 14s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+#features .f-wave2 use {
+  fill: rgba(1, 50, 28, 0.5);
+  animation: move-forever-features 9s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+#features .f-wave3 use {
+  fill: #01321C; /* Menyatu dengan background hijau tua #details di bawahnya */
+  animation: move-forever-features 6s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+@keyframes move-forever-features {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  50% {
+    transform: translate3d(85px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-90px, 0, 0);
+  }
+}
+/*--------------------------------------------------------------
+# Background Hijau Transparan Bergerak di Features Section
+--------------------------------------------------------------*/
+#features.features.section {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(1, 50, 28, 0.06) !important; /* Dasar hijau transparan sangat lembut */
+}
+
+/* Pastikan konten judul & 8 kotak mie berada di atas gelombang background */
+#features .container {
+  position: relative;
+  z-index: 2;
+}
+
+#features .features-bg-waves {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#features .features-bg-waves svg {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Lapisan gelombang hijau transparan dengan kecepatan gerak berbeda */
+#features .bg-wave-1 use {
+  fill: rgba(1, 50, 28, 0.14);
+  animation: gerak-bg-hijau 18s ease-in-out infinite;
+}
+
+#features .bg-wave-2 use {
+  fill: rgba(1, 50, 28, 0.22);
+  animation: gerak-bg-hijau 12s ease-in-out infinite reverse;
+}
+
+#features .bg-wave-3 use {
+  fill: rgba(1, 50, 28, 0.30);
+  animation: gerak-bg-hijau 8s ease-in-out infinite;
+}
+
+@keyframes gerak-bg-hijau {
+  0% {
+    transform: translate3d(-90px, 6px, 0);
+  }
+  50% {
+    transform: translate3d(85px, -8px, 0);
+  }
+  100% {
+    transform: translate3d(-90px, 6px, 0);
+  }
+}
+#features.features.section {
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(1, 50, 28, 0.14) !important;
+  padding-bottom: 115px !important;
+}
+
+#features .container {
+  position: relative;
+  z-index: 2;
+}
+
+#features .features-waves {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 85px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#features .f-wave1 use {
+  fill: rgba(1, 50, 28, 0.25);
+  animation: move-forever-features 14s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+#features .f-wave2 use {
+  fill: rgba(1, 50, 28, 0.45);
+  animation: move-forever-features 9s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+#features .f-wave3 use {
+  fill: #01321C;
+  animation: move-forever-features 6s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+}
+
+@keyframes move-forever-features {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  50% {
+    transform: translate3d(85px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-90px, 0, 0);
+  }
+}
+/*--------------------------------------------------------------
+# Features Section: Background Hijau Transparan & Gelombang Tipis di Bawah
+--------------------------------------------------------------*/
+section#features.features.section {
+  position: relative !important;
+  overflow: hidden !important;
+  background-color: rgba(1, 50, 28, 0.22) !important; /* Hijau tua transparan jelas merata */
+  padding-bottom: 95px !important;
+}
+
+/* Pastikan judul & 8 kotak mie berada di atas */
+#features .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Gelombang hanya di bagian paling bawah dengan tinggi kecil/rapi */
+#features .features-waves {
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 52px !important; /* Kecil & tipis di bawah, tidak naik ke kotak mie */
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+#features .f-wave1 use {
+  fill: rgba(1, 50, 28, 0.35) !important;
+  animation: move-forever-features 14s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite !important;
+}
+
+#features .f-wave2 use {
+  fill: rgba(1, 50, 28, 0.55) !important;
+  animation: move-forever-features 9s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite !important;
+}
+
+#features .f-wave3 use {
+  fill: #01321C !important; /* Menyatu pas ke background hijau tua #details */
+  animation: move-forever-features 6s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite !important;
+}
+
+@keyframes move-forever-features {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+  50% {
+    transform: translate3d(85px, 0, 0);
+  }
+  100% {
+    transform: translate3d(-90px, 0, 0);
+  }
+}
+/*--------------------------------------------------------------
+# Kembalikan Ukuran Kotak Varian Mie (#features) Jadi Ringkas Seperti Awal
+--------------------------------------------------------------*/
+#features .features-item {
+  padding: 16px 20px !important;
+  min-height: unset !important;
+  height: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+#features .features-item .mie-symbol {
+  font-size: 26px !important;
+  line-height: 1 !important;
+  flex-shrink: 0 !important;
+}
+
+#features .features-item h3 {
+  margin: 0 !important;
+  font-size: 1.05rem !important;
+  line-height: 1.3 !important;
+}
+
+/* Rapikan jarak antar-baris & antar-kolom di #features */
+#features .row.gy-4 {
+  --bs-gutter-y: 1.15rem !important;
+  --bs-gutter-x: 1.15rem !important;
+}
+/*--------------------------------------------------------------
+# Cegah Kotak Varian Mie (#features) Melar Panjang Saat Zoom Out
+--------------------------------------------------------------*/
+#features .row.gy-4 > [class*="col-"] {
+  display: flex;
+}
+
+#features .features-item {
+  width: 100% !important;
+  padding: 14px 18px !important;
+  border-radius: 10px !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+#features .features-item h3 {
+  font-size: 0.98rem !important;
+  margin: 0 !important;
+  white-space: nowrap;
+}
+
+/* Saat zoom out / layar sangat lebar, batasi lebar maksimal container agar tidak terlalu melebar */
+@media (min-width: 1400px) {
+  #features .container {
+    max-width: 1140px !important;
+  }
+}
+/*--------------------------------------------------------------
+# Gallery Section (Pilihan dan Daftar Harga Mie)
+# Palet: Hijau Tua (#01321C), Cream (#FFEFCD), Oranye (#F8A41E)
+--------------------------------------------------------------*/
+section#gallery.gallery.section {
+  background-color: rgba(1, 50, 28, 0.16) !important;
+  color: #01321C !important;
+}
+
+/* Judul & subjudul section */
+#gallery .section-title h2 {
+  color: #01321C !important;
+  font-weight: 600 !important;
+}
+
+#gallery .section-title h2::after {
+  background: #F8A41E !important;
+}
+
+#gallery .section-title div,
+#gallery .section-title span,
+#gallery .section-title p {
+  color: #01321C !important;
+}
+
+#gallery .section-title .description-title {
+  color: #F8A41E !important;
+}
+
+/* Kartu kiri ("Pilihan Mie") & kartu kanan ("Informasi Pemesanan") */
+#gallery .col-lg-7 > div.rounded-4,
+#gallery .col-lg-5 > div.rounded-4 {
+  background-color: #FFEFCD !important;
+  border: 2px solid rgba(1, 50, 28, 0.2) !important;
+  box-shadow: 0 12px 28px rgba(1, 50, 28, 0.12) !important;
+  color: #01321C !important;
+}
+
+/* Heading & ikon utama di dalam kartu */
+#gallery h3,
+#gallery h5 {
+  color: #01321C !important;
+  font-weight: 700 !important;
+}
+
+#gallery .text-muted {
+  color: rgba(1, 50, 28, 0.72) !important;
+}
+
+#gallery .bi-egg-fried,
+#gallery .bi-clipboard-check {
+  color: #F8A41E !important;
+}
+
+#gallery .text-success,
+#gallery .bi-plus-circle,
+#gallery .bi-card-checklist,
+#gallery .bi-check-circle-fill,
+#gallery .bi-chat-dots {
+  color: #01321C !important;
+}
+
+/* Tiap baris produk mie di sebelah kiri */
+#gallery .col-lg-7 .d-flex.rounded-3 {
+  background-color: rgba(255, 255, 255, 0.78) !important;
+  border: 1px solid rgba(1, 50, 28, 0.14) !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+#gallery .col-lg-7 .d-flex.rounded-3:hover {
+  transform: translateY(-2px);
+  border-color: #F8A41E !important;
+  box-shadow: 0 6px 16px rgba(1, 50, 28, 0.14) !important;
+}
+
+/* Nominal harga produk mie (Rp16.000, Rp18.000, dst.) */
+#gallery .col-lg-7 .d-flex.rounded-3 strong {
+  color: #d97b00 !important;
+  font-size: 1.05rem;
+  font-weight: 700 !important;
+}
+
+/* Garis batas & harga pada "Tambahan Telur" */
+#gallery .col-lg-5 .border-bottom {
+  border-color: rgba(1, 50, 28, 0.18) !important;
+}
+
+#gallery .col-lg-5 .d-flex strong {
+  color: #01321C !important;
+  font-weight: 700 !important;
+}
+
+/* Kotak catatan kontak di bagian bawah kartu kanan */
+#gallery .col-lg-5 > div.rounded-4 > div.p-3.rounded-3 {
+  background-color: #01321C !important;
+  color: #FFEFCD !important;
+  border: 1.5px solid #F8A41E !important;
+}
+
+#gallery .col-lg-5 > div.rounded-4 > div.p-3.rounded-3 .bi-chat-dots,
+#gallery .col-lg-5 > div.rounded-4 > div.p-3.rounded-3 p {
+  color: #FFEFCD !important;
+}
+/*--------------------------------------------------------------
+# Testimonials Section (Pengalaman Pelanggan Kami)
+# Palet: Hijau Tua (#01321C), Cream (#FFEFCD), Oranye (#F8A41E)
+--------------------------------------------------------------*/
+section#testimonials.testimonials.section,
+section.testimonials.section {
+  background-color: rgba(1, 50, 28, 0.16) !important;
+  color: #01321C !important;
+}
+
+/* Judul & garis aksen bagian atas testimoni */
+.testimonials .section-title h2 {
+  color: #01321C !important;
+  font-weight: 600 !important;
+}
+
+.testimonials .section-title h2::after {
+  background: #F8A41E !important;
+}
+
+.testimonials .section-title div,
+.testimonials .section-title span,
+.testimonials .section-title p {
+  color: #01321C !important;
+}
+
+.testimonials .section-title .description-title {
+  color: #F8A41E !important;
+}
+
+/* Ganti overlay ungu transparan menjadi hijau tua transparan */
+.testimonials::before,
+.testimonials .testimonials-bg::after,
+.testimonials .swiper-slide::before,
+.testimonials .testimonial-item::before {
+  background: linear-gradient(
+    180deg,
+    rgba(1, 50, 28, 0.74) 0%,
+    rgba(1, 50, 28, 0.84) 100%
+  ) !important;
+}
+
+/* Jika overlay ungu berupa elemen div/img/gradient di dalam .testimonials */
+.testimonials [style*="purple"],
+.testimonials [style*="violet"],
+.testimonials [style*="indigo"],
+.testimonials [style*="#6"],
+.testimonials [style*="#5"],
+.testimonials [style*="#4"] {
+  background-color: rgba(1, 50, 28, 0.78) !important;
+}
+
+/* Warna teks nama pelanggan, quote, dan ikon */
+.testimonials .testimonial-item h3,
+.testimonials .testimonial-item .testimonial-name,
+.testimonials .testimonial-item h4 {
+  color: #FFEFCD !important;
+  font-weight: 700 !important;
+}
+
+.testimonials .testimonial-item p,
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right,
+.testimonials .bi-quote {
+  color: #FFEFCD !important;
+}
+
+/* Bintang rating warna oranye */
+.testimonials .stars,
+.testimonials .stars i,
+.testimonials .bi-star-fill {
+  color: #F8A41E !important;
+}
+
+/* Lingkaran avatar / foto profil */
+.testimonials .testimonial-img {
+  border: 3px solid #F8A41E !important;
+  background-color: #FFEFCD !important;
+}
+
+/* Titik navigasi slider (pagination dots) */
+.testimonials .swiper-pagination-bullet {
+  background: #FFEFCD !important;
+  opacity: 0.55 !important;
+}
+
+.testimonials .swiper-pagination-bullet-active {
+  background: #F8A41E !important;
+  opacity: 1 !important;
+}
+/*--------------------------------------------------------------
+# Paksa Background Kuning (#FFEFCD) pada Judul Testimoni
+--------------------------------------------------------------*/
+section.testimonials,
+section#testimonials,
+section.testimonials .container.section-title,
+section.testimonials .section-title,
+section.testimonials .section-bg {
+  background: #FFEFCD !important;
+  background-color: #FFEFCD !important;
+}
+
+section.testimonials .section-title h2,
+section.testimonials .section-title div,
+section.testimonials .section-title span,
+section.testimonials .section-title p {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: #01321C !important;
+}
+
+section.testimonials .section-title h2::after {
+  background: #F8A41E !important;
+}
+/*--------------------------------------------------------------
+# Testimoni: Background Kuning (#FFEFCD) di Atas Judul & Hijau Tua di Slider
+--------------------------------------------------------------*/
+
+/* Latar kuning di atas tulisan TESTIMONI / PENGALAMAN PELANGGAN KAMI */
+section:has(+ #testimonials),
+section:has(+ #testimonials) .section-title,
+section:has(+ #testimonials) .container {
+  background-color: #FFEFCD !important;
+  color: #01321C !important;
+}
+
+section:has(+ #testimonials) .section-title h2,
+section:has(+ #testimonials) .section-title div,
+section:has(+ #testimonials) .section-title span,
+section:has(+ #testimonials) .section-title p {
+  color: #01321C !important;
+}
+
+section:has(+ #testimonials) .section-title h2::after {
+  background: #F8A41E !important;
+}
+
+/* Override .dark-background & gambar bg di dalam #testimonials agar selaras */
+section#testimonials.testimonials.section.dark-background {
+  background-color: #01321C !important;
+  color: #FFEFCD !important;
+}
+
+section#testimonials .testimonials-bg {
+  opacity: 0.25 !important;
+}
+
+section#testimonials::before {
+  content: "" !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(
+    180deg,
+    rgba(1, 50, 28, 0.78) 0%,
+    rgba(1, 50, 28, 0.88) 100%
+  ) !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+section#testimonials > .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Warna teks nama, ulasan, bintang & titik navigasi */
+section#testimonials .testimonial-item h3 {
+  color: #FFEFCD !important;
+  font-weight: 700 !important;
+}
+
+section#testimonials .testimonial-item p,
+section#testimonials .testimonial-item p span,
+section#testimonials .testimonial-item .bi-quote {
+  color: #FFEFCD !important;
+}
+
+section#testimonials .stars i,
+section#testimonials .bi-star-fill {
+  color: #F8A41E !important;
+}
+
+section#testimonials .testimonial-img {
+  border: 3px solid #F8A41E !important;
+  background-color: #FFEFCD !important;
+}
+
+section#testimonials .swiper-pagination-bullet {
+  background: #FFEFCD !important;
+  opacity: 0.5 !important;
+}
+
+section#testimonials .swiper-pagination-bullet-active {
+  background: #F8A41E !important;
+  opacity: 1 !important;
+}
+/*--------------------------------------------------------------
+# FAQ Section (Pertanyaan yang Sering Ditanyakan)
+# Palet: Hijau Tua (#01321C), Cream (#FFEFCD), Oranye (#F8A41E)
+--------------------------------------------------------------*/
+section#faq.faq.section,
+section.faq.section {
+  background-color: #F8A41E !important;
+  color: #01321C !important;
+}
+
+/* Judul & deskripsi kiri */
+.faq h2,
+.faq h3,
+.faq p {
+  color: #01321C !important;
+}
+
+.faq h2 strong,
+.faq h2 span.highlight,
+.faq h2 .description-title,
+.faq h2 em {
+  color: #F8A41E !important;
+  font-style: normal !important;
+}
+
+/* Kotak daftar pertanyaan */
+.faq .faq-item,
+.faq .accordion-item,
+.faq .faq-content-box,
+.faq .faq-list li {
+  background-color: #FFEFCD !important;
+  border: 1.5px solid rgba(1, 50, 28, 0.16) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 6px 18px rgba(1, 50, 28, 0.08) !important;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.faq .faq-item:hover,
+.faq .accordion-item:hover,
+.faq .faq-active,
+.faq .faq-item.faq-active {
+  transform: translateY(-2px);
+  border-color: #F8A41E !important;
+  box-shadow: 0 10px 22px rgba(1, 50, 28, 0.14) !important;
+}
+
+/* Teks pertanyaan, ikon tanda tanya, dan panah */
+.faq .faq-item h3,
+.faq .faq-item .faq-toggle,
+.faq .accordion-button {
+  background: transparent !important;
+  color: #01321C !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+}
+
+.faq .faq-icon,
+.faq .bi-question-circle,
+.faq .bi-question-circle-fill,
+.faq .fa-question-circle {
+  color: #F8A41E !important;
+}
+
+.faq .faq-toggle,
+.faq .bi-chevron-right,
+.faq .bi-chevron-down,
+.faq .accordion-button::after {
+  color: #01321C !important;
+}
+
+/* Isi jawaban ketika pertanyaan dibuka */
+.faq .faq-content,
+.faq .accordion-body {
+  color: #01321C !important;
+  border-top: 1px solid rgba(1, 50, 28, 0.14) !important;
+}
+
+/* Bingkai gambar ilustrasi di sisi kanan */
+.faq .faq-img img,
+.faq img.img-fluid {
+  border-radius: 14px !important;
+  border: 3px solid rgba(1, 50, 28, 0.2) !important;
+  box-shadow: 0 12px 26px rgba(1, 50, 28, 0.14) !important;
+}
+/*--------------------------------------------------------------
+# Contact Section: Lokasi Cabang, Google Maps & WhatsApp
+# Palet: Hijau Tua (#01321C), Cream (#FFEFCD), Oranye (#F8A41E)
+--------------------------------------------------------------*/
+section#contact.contact.section {
+  background-color: #01321C !important;
+  color: #01321C !important;
+}
+
+#contact .section-title h2 {
+  color: #FFEFCD !important;
+  font-weight: 600 !important;
+}
+
+#contact .section-title h2::after {
+  background: #F8A41E !important;
+}
+
+#contact .section-title div,
+#contact .section-title span {
+  color: #FFEFCD !important;
+}
+
+#contact .section-title .description-title {
+  color: #d97b00 !important;
+}
+
+/* Kartu cabang */
+#contact .cabang-card {
+  background-color: #FFEFCD !important;
+  border: 2px solid rgba(1, 50, 28, 0.2) !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  box-shadow: 0 12px 28px rgba(1, 50, 28, 0.12) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Peta interaktif di bagian atas kartu */
+#contact .cabang-map-wrapper {
+  width: 100%;
+  height: 250px;
+  border-bottom: 2px solid rgba(1, 50, 28, 0.16);
+  background-color: rgba(1, 50, 28, 0.08);
+}
+
+#contact .cabang-map-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* Konten informasi cabang */
+#contact .cabang-body {
+  padding: 24px 26px 28px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+}
+
+#contact .cabang-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #d97b00 !important;
+  margin-bottom: 4px;
+}
+
+#contact .cabang-title {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #01321C !important;
+  margin-bottom: 18px;
+}
+
+#contact .cabang-info-block {
+  margin-bottom: 14px;
+}
+
+#contact .cabang-info-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #01321C !important;
+  margin-bottom: 2px;
+}
+
+#contact .cabang-info-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(1, 50, 28, 0.88) !important;
+  margin: 0;
+}
+
+/* Tombol Google Maps & WhatsApp */
+#contact .cabang-actions {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+#contact .btn-gmaps,
+#contact .btn-wa {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Tombol Buka Google Maps (Hijau Tua + Border Cream/Hijau) */
+#contact .btn-gmaps {
+  background-color: transparent;
+  color: #01321C !important;
+  border: 2px solid #01321C;
+}
+
+#contact .btn-gmaps:hover {
+  background-color: #01321C;
+  color: #FFEFCD !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(1, 50, 28, 0.2);
+}
+
+/* Tombol WhatsApp Cabang (Oranye Brand + Teks Hijau Tua) */
+#contact .btn-wa {
+  background-color: #F8A41E;
+  color: #01321C !important;
+  border: 2px solid #F8A41E;
+}
+
+#contact .btn-wa:hover {
+  background-color: #e29110;
+  border-color: #e29110;
+  color: #01321C !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(248, 164, 30, 0.35);
+}
+/*--------------------------------------------------------------
+# Efek Floating Kartu Cabang (#contact) - Lebih Terasa
+--------------------------------------------------------------*/
+@keyframes floatCabang {
+  0%, 100% {
+    transform: translate3d(0, 0px, 0);
+  }
+  50% {
+    transform: translate3d(0, -22px, 0);
+  }
+}
+
+/* Matikan bentrok AOS transform setelah animasi masuk selesai */
+section#contact .col-lg-6[data-aos] {
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* Beri ruang napas atas agar kartu saat naik tidak mepet ke atas */
+section#contact.contact.section {
+  padding-top: 70px !important;
+}
+
+/* Paksa animasi floating jalan di kedua kartu cabang */
+section#contact .cabang-card {
+  position: relative !important;
+  will-change: transform !important;
+  animation: floatCabang 4.2s ease-in-out infinite !important;
+}
+
+/* Jeda fase kartu kedua (Kebumen) */
+section#contact .col-lg-6:nth-child(2) .cabang-card {
+  animation-delay: 2.1s !important;
+}
+
+/* Jeda animasi saat kursor diarahkan ke kartu */
+section#contact .cabang-card:hover {
+  animation-play-state: paused !important;
+  box-shadow: 0 18px 34px rgba(1, 50, 28, 0.2) !important;
+  border-color: #F8A41E !important;
+}
+/*--------------------------------------------------------------
+# Footer Final: Palet #FFEFCD, #01321C, #F8A41E + Ukuran Font Pas
+--------------------------------------------------------------*/
+footer#footer.footer,
+footer#footer.footer.dark-background {
+  background-color: #FFEFCD !important;
+  background: #FFEFCD !important;
+  color: #01321C !important;
+  border-top: 4px solid #F8A41E !important;
+  padding-top: 56px !important;
+  padding-bottom: 24px !important;
+}
+
+/* Lebarkan container agar tidak menumpuk di tengah dan beri padding aman kiri-kanan */
+footer#footer .container.footer-top {
+  max-width: 1320px !important;
+  width: 100% !important;
+  padding-left: clamp(24px, 4vw, 64px) !important;
+  padding-right: clamp(24px, 4vw, 64px) !important;
+}
+
+/* Sebar kolom lebih renggang dan merata tanpa mepet pinggir */
+footer#footer .footer-top .row {
+  display: flex !important;
+  justify-content: space-between !important;
+  row-gap: 32px !important;
+}
+
+@media (min-width: 992px) {
+  footer#footer .footer-about {
+    flex: 0 0 42% !important;
+    max-width: 42% !important;
+  }
+
+  footer#footer .footer-links {
+    flex: 0 0 25% !important;
+    max-width: 25% !important;
+  }
+}
+
+/* Nama brand atas & heading kolom digedein */
+footer#footer .sitename {
+  font-size: 2.1rem !important;
+  font-weight: 700 !important;
+  color: #01321C !important;
+  letter-spacing: 0.3px;
+}
+
+footer#footer h4 {
+  font-size: 1.35rem !important;
+  font-weight: 700 !important;
+  color: #01321C !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 8px !important;
+}
+
+footer#footer h4::after {
+  background-color: #F8A41E !important;
+}
+
+/* Teks alamat & daftar link menu digedein */
+footer#footer .footer-contact p {
+  font-size: 1.14rem !important;
+  line-height: 1.65 !important;
+  color: #01321C !important;
+  margin-bottom: 12px !important;
+}
+
+footer#footer .footer-links ul li {
+  padding: 8px 0 !important;
+}
+
+footer#footer .footer-links ul a {
+  font-size: 1.14rem !important;
+  color: #01321C !important;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+footer#footer .footer-links ul a:hover {
+  color: #d97b00 !important;
+  transform: translateX(4px);
+}
+
+/* Item & ikon Keunggulan Kami (Tersertifikasi Halal, Berkualitas, Terjangkau) */
+footer#footer .footer-keunggulan li::before,
+footer#footer .footer-keunggulan li i.bi-chevron-right {
+  display: none !important;
+}
+
+footer#footer .keunggulan-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  font-size: 1.14rem !important;
+  color: #01321C !important;
+  font-weight: 500;
+}
+
+footer#footer .keunggulan-item i {
+  font-size: 1.45rem !important;
+  color: #F8A41E !important;
+  flex-shrink: 0;
+}
+
+/* Tombol ikon sosial media (Facebook & Instagram) */
+footer#footer .social-links {
+  gap: 12px !important;
+  margin-top: 20px !important;
+}
+
+footer#footer .social-links a {
+  width: 48px !important;
+  height: 48px !important;
+  font-size: 1.3rem !important;
+  color: #01321C !important;
+  background-color: transparent !important;
+  border: 2px solid #01321C !important;
+  border-radius: 50% !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.25s ease !important;
+}
+
+footer#footer .social-links a:hover {
+  background-color: #F8A41E !important;
+  border-color: #F8A41E !important;
+  color: #01321C !important;
+  transform: translateY(-2px);
+}
+
+/* Copyright di bagian paling bawah: ukuran normal & rapi */
+footer#footer .copyright {
+  margin-top: 32px !important;
+  padding-top: 22px !important;
+  border-top: 1px solid rgba(1, 50, 28, 0.2) !important;
+  font-size: 1rem !important;
+  color: #01321C !important;
+}
+
+footer#footer .copyright p,
+footer#footer .copyright span,
+footer#footer .copyright strong {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #01321C !important;
+}
+/*--------------------------------------------------------------
+# Header Nav Menu: Warna Hijau Tua (#01321C) & Aksen Oranye (#F8A41E)
+--------------------------------------------------------------*/
+header#header,
+header#header.header {
+  background-color: #FFEFCD !important;
+}
+
+/* Semua link menu di header */
+header#header .navmenu a,
+header#header .navmenu a:focus,
+header#header .navmenu > ul > li > a {
+  color: #01321C !important;
+  font-weight: 500 !important;
+  transition: color 0.2s ease !important;
+}
+
+/* Saat kursor diarahkan (hover), menu aktif (active), atau diklik */
+header#header .navmenu a:hover,
+header#header .navmenu li:hover > a,
+header#header .navmenu .active,
+header#header .navmenu .active:focus,
+header#header .navmenu li:hover > a::before,
+header#header .navmenu .active::before,
+header#header .navmenu a:hover::before {
+  color: #01321C !important;
+  border-color: #F8A41E !important;
+}
+
+/* Garis bawah / indikator menu aktif atau hover memakai Oranye (#F8A41E) */
+header#header .navmenu > ul > li > a::before {
+  background-color: #F8A41E !important;
+}
+
+/* Submenu / dropdown jika ada */
+header#header .navmenu .dropdown ul {
+  background-color: #FFEFCD !important;
+  border: 1px solid rgba(1, 50, 28, 0.16) !important;
+}
+
+header#header .navmenu .dropdown ul a {
+  color: #01321C !important;
+}
+
+header#header .navmenu .dropdown ul a:hover {
+  background-color: rgba(248, 164, 30, 0.2) !important;
+  color: #01321C !important;
+}
+
+/* Tombol ikon mobile nav bila dibuka di layar kecil */
+header#header .mobile-nav-toggle {
+  color: #01321C !important;
+}
+/*--------------------------------------------------------------
+# Logo Header: Tulisan "PABRIK MIE" Jadi Hijau Tua (#01321C)
+--------------------------------------------------------------*/
+header#header .logo,
+header#header .logo span,
+header#header .logo p,
+header#header .logo small,
+header#header .logo div:first-child {
+  color: #01321C !important;
+}
+
+/* Pertahankan warna Oranye (#F8A41E) untuk nama utama "KURNIA JAYA" jika memakai class/elemen khusus */
+header#header .logo .sitename,
+header#header .logo h1,
+header#header .logo strong {
+  color: #F8A41E !important;
+}
+/*--------------------------------------------------------------
+# Perbesar Ukuran & Jarak Menu Header (Beranda, Tentang Kami, dst.)
+--------------------------------------------------------------*/
+header#header .navmenu > ul {
+  gap: 8px !important;
+}
+
+header#header .navmenu a,
+header#header .navmenu a:focus,
+header#header .navmenu > ul > li > a {
+  font-size: 1.08rem !important;
+  font-weight: 600 !important;
+  padding: 14px 12px !important;
+}
+
+header#header .navmenu .dropdown ul a {
+  font-size: 1.02rem !important;
+  padding: 10px 18px !important;
+}
+/*--------------------------------------------------------------
+# Hero: Paragraf Deskripsi Rata Kiri-Kanan (Justify)
+--------------------------------------------------------------*/
+section#hero p,
+.hero p {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+/*--------------------------------------------------------------
+# Alignment Section: Deskripsi & Subjudul Justify, Statistik Center, Alamat Footer Left
+--------------------------------------------------------------*/
+main section p,
+.section p,
+.section .section-title p {
+  text-align: justify !important;
+  text-justify: inter-word !important;
+}
+
+/* Statistik tetap center */
+.stats .stats-item p,
+.stats p {
+  text-align: center !important;
+}
+
+/* Alamat di footer tetap rata kiri (left) */
+footer#footer .footer-contact p,
+footer#footer p {
+  text-align: left !important;
+}
